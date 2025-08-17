@@ -41,7 +41,7 @@ denominator /= gcd_res;
 }
 
 // add f1 to f2 and f2 remains the same (f1 = f1 + f2 , f2 still equal f2)
-void add(fraction f2){
+void add(fraction &f2){
 int new_denominator = denominator * f2.denominator;
 int new_numerator = (numerator*f2.denominator) + (f2.numerator*denominator);
 numerator = new_numerator; 
@@ -50,14 +50,14 @@ simplify();
 }
 
 // multiply f1 to f2 and f2 remains the same (f1 = f1 * f2 , f2 still equal f2)
-void mul(fraction f2){
+void mul(fraction &f2){
     numerator *= f2.numerator;
     denominator *= f2.denominator;
     simplify();
 }
 
 // operator add function ==> f3 = f1 + f2
-fraction operator+(fraction f2){
+fraction operator+(fraction &f2) const{
 int new_numerator = (numerator*f2.denominator) + (f2.numerator*denominator);
 int new_denominator = denominator * f2.denominator;
 fraction f_new(new_numerator , new_denominator);
@@ -68,7 +68,7 @@ return f_new;
 }
 
 // operator mul function ==> f3 = f1 * f2
-fraction operator*(fraction f2){
+fraction operator*(fraction &f2) const{
     int new_numerator = numerator * f2.numerator;
     int new_denominator = denominator * f2.denominator;
     fraction f_new(new_numerator , new_denominator);
@@ -77,7 +77,7 @@ fraction operator*(fraction f2){
 }
 
 // operator == to check is f1 equal f2 ?
-bool operator==(fraction f2){
+bool operator==(fraction &f2) const{
 return ((numerator == f2.numerator) && (denominator == f2.denominator));
 }
 // print fraction
