@@ -89,7 +89,7 @@ void files() {
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 }
-
+ 
 
 int main(){
     files();
